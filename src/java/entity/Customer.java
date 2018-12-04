@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author Sanata
+ * @author Anton
  */
 @Entity
 public class Customer{

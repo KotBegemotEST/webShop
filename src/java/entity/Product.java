@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author pupil
+ * @author Anton
  */
 @Entity
 public class Product {

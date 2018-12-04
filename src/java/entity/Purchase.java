@@ -15,7 +15,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author Sanata
+ * @author Anton
  */
 @Entity
 public class Purchase implements Serializable {

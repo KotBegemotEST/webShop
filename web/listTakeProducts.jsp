@@ -1,7 +1,7 @@
 <%-- 
     Document   : listTakeProducts
     Created on : Oct 27, 2018, 11:22:48 PM
-    Author     : Lenovo
+    Author     : Anton
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

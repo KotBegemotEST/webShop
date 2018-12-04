@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 /**
  *
- * @author Lenovo
+ * @author Anton
  */
 @Stateless
 public class CustomerFacade extends AbstractFacade<Customer> {
