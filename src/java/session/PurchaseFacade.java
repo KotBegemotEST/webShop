@@ -1,20 +1,23 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package session;
 
 import entity.Product;
 import entity.Purchase;
 import java.util.List;
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 /**
  *
  * @author Anton
  */
 @Stateless
 public class PurchaseFacade extends AbstractFacade<Purchase> {
-
-    @EJB ProductFacade productFacade;
 
     @PersistenceContext(unitName = "KTVR17WebShopPU")
     private EntityManager em;
@@ -27,7 +30,10 @@ public class PurchaseFacade extends AbstractFacade<Purchase> {
     public PurchaseFacade() {
         super(Purchase.class);
     }
-    public List<Purchase> findTakeProduct (){
+
+
+public List<Purchase> findBuyProducts(){
+
         return em.createQuery("SELECT p FROM Purchase p WHERE p.dateReturn=NULL").getResultList();
     }
     public List<Purchase> find (Product product){
@@ -35,5 +41,15 @@ public class PurchaseFacade extends AbstractFacade<Purchase> {
     
     }
     
-    
+
+  
+
+  
 }
+   
+   
+
+   
+
+  
+    

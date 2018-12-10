@@ -1,25 +1,39 @@
+<%-- 
+    Document   : newCustomer
+    Created on : 16-Oct-2018, 21:17:50
+    Author     : Anton
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>newCustomer</title>
+        <title>JSP Page нового покупателя</title>
+             <style>
+        </style>   
     </head>
-     <body>
-        <h1>Добавить  нового покупателя</h1>
-        <form action="addCustomer" method="POST" name="form1" id="_form"  >
-        Имя:<br>
-        <p><input type="text" name="name" placeholder="name"  autofocus required ></p><!--autofocus required - поле для обязательного заполнения--> 
-        Фамилия:
-        <p><input type="text" name="surname" placeholder="surname" required></p> 
-        Телефон:
-        <p><input type="text" name="money" placeholder="money"  autofocus required ></p><!----> 
-        
-        <input type="submit" name ="send" value="Добавить">				
-        </form>	
-   
-        <br>
-        <p><a href="home">Home</a><br><br>
-        
+    <body>
+        <h3>Добавляем в Shop нового покупателя</h3>
+        ${info}
+        <form action="addCustomer" method="POST" name="form1" id="_form1">
+            Имя:<br>
+            <input type="text" name="name"><br><br>
+            Фамилия:<br>
+            <input type="text" name="surname"><br><br>
+            Деньги:<br>
+            <input type="text" name="money"><br>
+            <br>
+            Логин:<br>
+            <input type="text" name="login"><br><br>
+            Пароль:<br>
+            <input type="text" name="password1"><br>
+            Повторите пароль:<br>
+            <input type="text" name="password2">
+            <br>
+            <br><br>
+            <input type="submit" value="Добавить">
+        </form><br><br>
     </body>
 </html>

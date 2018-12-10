@@ -1,10 +1,13 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entity;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,33 +21,34 @@ import javax.persistence.TemporalType;
  * @author Anton
  */
 @Entity
-public class Purchase implements Serializable {
-
+public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToOne
     private Product product;
-    @OneToOne(cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToOne
     private Customer customer;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date saleProduct;
+    private Date date;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateReturn;
-
     private Integer quantity;
+   
 
-    public Purchase() {
+
+public Purchase() {
     }
 
-    public Purchase(Product product, Customer customer, Date saleProduct, Date dateReturn, Integer quantity) {
-//        this.id = id;
+    public Purchase( Product product, Customer customer, Date date, Integer quantity) {
+        this.id = id;
         this.product = product;
         this.customer = customer;
-        this.saleProduct = saleProduct;
-        this.dateReturn = dateReturn;
+        this.date = date;
+         this.dateReturn = dateReturn;
         this.quantity = quantity;
     }
+
 
     public Long getId() {
         return id;
@@ -70,15 +74,14 @@ public class Purchase implements Serializable {
         this.customer = customer;
     }
 
-    public Date getSaleProduct() {
-        return saleProduct;
+    public Date getDate() {
+        return date;
     }
 
-    public void setSaleProduct(Date saleProduct) {
-        this.saleProduct = saleProduct;
+    public void setDate(Date date) {
+        this.date = date;
     }
-
-    public Date getDateReturn() {
+  public Date getDateReturn() {
         return dateReturn;
     }
 
@@ -96,13 +99,13 @@ public class Purchase implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 61 * hash + Objects.hashCode(this.id);
-        hash = 61 * hash + Objects.hashCode(this.product);
-        hash = 61 * hash + Objects.hashCode(this.customer);
-        hash = 61 * hash + Objects.hashCode(this.saleProduct);
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.product);
+        hash = 97 * hash + Objects.hashCode(this.customer);
+        hash = 97 * hash + Objects.hashCode(this.date);
         hash = 61 * hash + Objects.hashCode(this.dateReturn);
-        hash = 61 * hash + Objects.hashCode(this.quantity);
+        hash = 97 * hash + Objects.hashCode(this.quantity);
         return hash;
     }
 
@@ -127,9 +130,10 @@ public class Purchase implements Serializable {
         if (!Objects.equals(this.customer, other.customer)) {
             return false;
         }
-        if (!Objects.equals(this.saleProduct, other.saleProduct)) {
+        if (!Objects.equals(this.date, other.date)) {
             return false;
         }
+
         if (!Objects.equals(this.dateReturn, other.dateReturn)) {
             return false;
         }
@@ -139,18 +143,19 @@ public class Purchase implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
+
+
+//    public String toString() {
+//        return "Purchase{" + "id=" + id + ", product=" + product + ", customer=" + customer + ", date=" + date + ", quantity=" + quantity + '}';
+//    }
+   public String toString() {
         SimpleDateFormat myformat = new SimpleDateFormat("dd.MM.yyyy");
         if (dateReturn != null) {
-            return "ПОКУПКА: " + product.toString() + ". Покупатель - " + customer.getName() + " " + customer.getSurname() + ", " + myformat.format(saleProduct) + ", " + myformat.format(dateReturn) + ", купил в количестве " + quantity + " шт" + ' ';
+            return "ПОКУПКА: " + product.toString() + ". Покупатель - " + customer.getName() + " " + customer.getSurname() + ", " + myformat.format(date) + ", " + myformat.format(dateReturn) + ", купил в количестве " + quantity + " шт" + ' ';
         } else {
-            return "ПОКУПКА: " + product.toString() + ". Покупатель - " + customer.getName() + " " + customer.getSurname() + ", " + myformat.format(saleProduct) + ", купил в количестве " + quantity + " шт" + ' ';
+            return "ПОКУПКА: " + product.toString() + ". Покупатель - " + customer.getName() + " " + customer.getSurname() + ", " + myformat.format(date) + ", купил в количестве " + quantity + " шт" + ' ';
         }
     }
-
-//    @Override
-//    public String toString() {
-//        return "Purchase{" + "id=" + id + ", product=" + product + ", customer=" + customer + ", saleProduct=" + saleProduct + ", dateReturn=" + dateReturn + ", quantity=" + quantity + '}';
-//    }
+  
+    
 }

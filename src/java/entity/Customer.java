@@ -1,6 +1,13 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entity;
 
+import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,31 +18,31 @@ import javax.persistence.Id;
  * @author Anton
  */
 @Entity
-public class Customer{
+public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String name; 
     private String surname;
-    private Integer money;
+    private String money; 
+    @Column(unique = true)
+    private String login;
+    private String password;
+    private String salts;
 
     public Customer() {
     }
 
-    public Customer( String name, String surname, Integer money) {
-//        this.id = id;
+    public Customer(String name, String surname, String money, String login, String password, String salts) {
         this.name = name;
         this.surname = surname;
         this.money = money;
+        this.login = login;
+        this.password = password;
+        this.salts = salts;
     }
 
-    public Integer getMoney() {
-        return money;
-    }
 
-    public void setMoney(Integer money) {
-        this.money = money;
-    }
 
     public Long getId() {
         return id;
@@ -61,13 +68,48 @@ public class Customer{
         this.surname = surname;
     }
 
+    public String getMoney() {
+        return money;
+    }
+
+    public void setMoney(String money) {
+        this.money = money;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getSalts() {
+        return salts;
+    }
+
+    public void setSalts(String salts) {
+        this.salts = salts;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 41 * hash + Objects.hashCode(this.id);
-        hash = 41 * hash + Objects.hashCode(this.name);
-        hash = 41 * hash + Objects.hashCode(this.surname);
-        hash = 41 * hash + Objects.hashCode(this.money);
+        int hash = 3;
+        hash = 89 * hash + Objects.hashCode(this.id);
+        hash = 89 * hash + Objects.hashCode(this.name);
+        hash = 89 * hash + Objects.hashCode(this.surname);
+        hash = 89 * hash + Objects.hashCode(this.money);
+        hash = 89 * hash + Objects.hashCode(this.login);
+        hash = 89 * hash + Objects.hashCode(this.password);
+        hash = 89 * hash + Objects.hashCode(this.salts);
         return hash;
     }
 
@@ -89,10 +131,19 @@ public class Customer{
         if (!Objects.equals(this.surname, other.surname)) {
             return false;
         }
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.money, other.money)) {
             return false;
         }
-        if (!Objects.equals(this.money, other.money)) {
+        if (!Objects.equals(this.login, other.login)) {
+            return false;
+        }
+        if (!Objects.equals(this.password, other.password)) {
+            return false;
+        }
+        if (!Objects.equals(this.salts, other.salts)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
@@ -100,8 +151,8 @@ public class Customer{
 
     @Override
     public String toString() {
-        return " покупатель: " + name + " " + surname + ", имеет " + money + " евро "+ ' ';
+        return "Customer{" + "id=" + id + ", name=" + name + ", surname=" + surname + ", money=" + money + ", login=" + login + ", password=" + password + ", salts=" + salts + '}';
     }
-    
-    
+
+ 
 }

@@ -1,5 +1,11 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,31 +17,30 @@ import javax.persistence.Id;
  * @author Anton
  */
 @Entity
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Product implements Serializable {
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Integer price;
     private Integer count;
-    private Boolean active;
-
+//    @Column(unique = true)
+    
     public Product() {
     }
 
-    public Product(String name, Integer price, Integer count) {
-        this.name = name;
+    public Product(String nameProduct, Integer price, Integer count) {
+        this.name = nameProduct;
         this.price = price;
         this.count = count;
-        this.active = true;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long Id) {
+        this.id = Id;
     }
 
     public String getName() {
@@ -62,22 +67,13 @@ public class Product {
         this.count = count;
     }
 
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + Objects.hashCode(this.id);
-        hash = 79 * hash + Objects.hashCode(this.name);
-        hash = 79 * hash + Objects.hashCode(this.price);
-        hash = 79 * hash + Objects.hashCode(this.count);
-        hash = 79 * hash + Objects.hashCode(this.active);
+        int hash = 3;
+        hash = 31 * hash + Objects.hashCode(this.id);
+        hash = 31 * hash + Objects.hashCode(this.name);
+        hash = 31 * hash + Objects.hashCode(this.price);
+        hash = 31 * hash + Objects.hashCode(this.count);
         return hash;
     }
 
@@ -105,17 +101,14 @@ public class Product {
         if (!Objects.equals(this.count, other.count)) {
             return false;
         }
-        if (!Objects.equals(this.active, other.active)) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "товар: "  + name + ". Цена - " + price + ". Количество " + count+ " шт. " + ' ';
+        return "Product{" + "Id=" + id + ", name=" + name + ", price=" + price + ", count=" + count + '}';
     }
-    
+
     
     
 }
