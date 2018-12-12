@@ -53,7 +53,7 @@ public class Secure extends HttpServlet {
             EncriptPass ep = new EncriptPass();
             String salts = ep.createSalts();
             String encriptPass = ep.setEncriptPass("admin",salts);
-            Customer customer = new Customer("Tyrion", "Lanister", "0", "admin", encriptPass, salts);
+            Customer customer = new Customer("Tyrion", "Lanister", "100", "admin", encriptPass, salts);
             customerFacade.create(customer);
             Role role=new Role();
             role.setName("ADMIN");

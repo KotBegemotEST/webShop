@@ -142,12 +142,6 @@ public Purchase() {
         }
         return true;
     }
-
-
-
-//    public String toString() {
-//        return "Purchase{" + "id=" + id + ", product=" + product + ", customer=" + customer + ", date=" + date + ", quantity=" + quantity + '}';
-//    }
    public String toString() {
         SimpleDateFormat myformat = new SimpleDateFormat("dd.MM.yyyy");
         if (dateReturn != null) {
