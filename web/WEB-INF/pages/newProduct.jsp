@@ -14,7 +14,8 @@
         <style>
         </style> 
     </head>
-    <body>
+    <body>       
+        
         <h3 style='margin-left: 100px;color:red;'>Добавляем в Shop нового продукта</h3>
         <form action="addProduct" method="POST" name="form1" id="_form1">
             Название:<br>

@@ -20,7 +20,7 @@
         <form action="returnProduct" method="POST">
             <ul>
            <c:forEach var="purchase" items="${buyProducts}">
-                    <li> Продукт <b>"${purchase.product.name}"</b>по цене ${purchase.product.price} euro   - купил <b>
+                    <li> Продукт <b>"${purchase.product.name}" </b>по цене ${purchase.product.price} euro   - купил <b>
                                    ${purchase.customer.name} ${purchase.customer.surname} ; </b>
                          <a href="returnProduct?purchaseId=${purchase.id}"></a></li> 
             </c:forEach>

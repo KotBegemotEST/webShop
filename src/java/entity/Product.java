@@ -24,7 +24,7 @@ public class Product implements Serializable {
     private String name;
     private Integer price;
     private Integer count;
-//    @Column(unique = true)
+    private Boolean active;
     
     public Product() {
     }
@@ -66,6 +66,7 @@ public class Product implements Serializable {
     public void setCount(Integer count) {
         this.count = count;
     }
+    
 
     @Override
     public int hashCode() {

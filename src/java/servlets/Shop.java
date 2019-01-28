@@ -89,7 +89,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
         case "/addCustomer":{
             String name = request.getParameter("name");
             String surname = request.getParameter("surname");
-            String money = request.getParameter("money");
+            int money = new Integer(request.getParameter("money"));
             String login = request.getParameter("login");
             String password1 = request.getParameter("password1");
             String password2 = request.getParameter("password2");
@@ -101,7 +101,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
             EncriptPass ep = new EncriptPass();
             String salts = ep.createSalts();
             String encriptPass = ep.setEncriptPass(password1,salts);
-            Customer customer = new Customer(name, surname, money, login, encriptPass, salts);
+            Customer customer = new Customer(name, surname, new Integer(money), login, encriptPass, salts);
             customerFacade.create(customer);
             request.setAttribute("customer", customer);
             request.setAttribute("product", new Product());
@@ -121,10 +121,13 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
             break;
         }
         case "/shop":{
+
+            
             request.setAttribute("listProducts", productFacade.findAll());//findActived(true));
             request.setAttribute("listCustomer", customerFacade.findAll());
             request.getRequestDispatcher(PageReturner.getPage("buyProduct")).forward(request, response);
             break;
+            
         }
         case "/showBuyProduct":{
             List<Purchase> buyProducts = purchaseFacade.findAll();
@@ -134,24 +137,42 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
             }
         case "/buyProduct":{
             String selectedProduct = request.getParameter("selectedProduct");
-//            String selectedCountProduct = request.getParameter("selectedCountProduct");
             String selectedCustomer = request.getParameter("selectedCustomer");
+            
+           
             product = productFacade.find(new Long(selectedProduct));
             Customer customer = customerFacade.find(new Long(selectedCustomer));
+            
+            int customerMoney = new Integer(customer.getMoney());
+            int selectedCountProduct = new Integer(request.getParameter("count"));
+            int productPrice = product.getPrice();
+            
             Calendar c = new GregorianCalendar();
+            
             Purchase purchase;
-                if(product.getCount()>0){
-                    product.setCount(product.getCount()-1);
+            
+            if ((customerMoney - (selectedCountProduct * productPrice)) >= 0) {
+                if(product.getCount()-selectedCountProduct>0){  
+                    
+                    product.setCount(product.getCount()- selectedCountProduct);
+                    customer.setMoney(customerMoney - selectedCountProduct * productPrice);
+                    
+                    
+                    
                     productFacade.edit(product);
                     purchase = new Purchase(product, customer, c.getTime(), null);
                     purchaseFacade.create(purchase);
+                    
                 }else{
                     request.setAttribute("info", "Товар весь распродан!Ждите нового привоза товара!");
                 }       List<Purchase> buyProducts = purchaseFacade.findBuyProducts();
                 request.setAttribute("buyProducts", buyProducts);
                 request.getRequestDispatcher(PageReturner.getPage("listBuyProduct")).forward(request, response);
                     break;
+                    
+                    
                 }
+        }
 //            purchase.getCustomer().setMoney(purchase.getCustomer().getMoney()-purchase.getProduct().getPrice()*quantity);
 //             if (purchase.getMoney()<0){
 ////                    customer.setMoney(customer.getMoney()-1);
@@ -180,7 +201,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
         case "/deleteProduct":{
             String deleteProductId = request.getParameter("deleteProductId");
             product = productFacade.find(new Long(deleteProductId));
-//            product.setActive(Boolean.FALSE);
+//           product.setActive(Boolean.FALSE);
             productFacade.edit(product);
             List<Product> listProducts = productFacade.findAll();
             request.setAttribute("listProducts", listProducts);
