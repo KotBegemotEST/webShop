@@ -14,5 +14,6 @@
             </c:forEach>
         </ol>
         <p><a href="home">Home</a><br><br> 
+            <a href="/webShop">Главная</a></p>
     </body>
 </html>

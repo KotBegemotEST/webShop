@@ -28,5 +28,6 @@
         </form><br><br>
         <a href="newCustomer">Зарегистрироваться </a>
         </form><br>
+        <a href="/webShop">Главная</a></p>
     </body>
 </html>

@@ -31,6 +31,6 @@
             </select>
             <input type="submit" value="Назначить">
         </form>
-        
+        <a href="/webShop">Главная</a></p>
     </body>
 </html>

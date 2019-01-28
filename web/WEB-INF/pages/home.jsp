@@ -21,17 +21,7 @@
         <a href="purchase">Продать товар покупателю</a><br><br>
         <a href="showTakeProduct">Список проданного товара</a><br><br>
         <!------>
-      
-        <h3>Товар добавлен:</h3> <!--- ${product}--->
-        <b>Название -</b>  ${product.name}<br>   
-        <b>Цена -</b>  ${product.price} euro<br>
-        <b>Количество - </b>  ${product.count} tk
-        <br><br>
-        
-        <h3>Добавлен покупатель:</h3><!---   или все данные читател ${customer}--->
-        <b>Имя -</b>  ${customer.name}<br>
-        <b>Фамилия -</b>  ${customer.surname}<br>
-        <b>Кредит-</b> ${customer.money}<br>
+        <a href="/webShop">Главная</a></p>
   
     </body>
 </html>

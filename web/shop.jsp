@@ -31,5 +31,6 @@
             </select>
             <button type="submit" name="buyProduct">Купить  продукт</button>
         </form>
+        <a href="/webShop">Главная</a></p>
     </body>
 </html>

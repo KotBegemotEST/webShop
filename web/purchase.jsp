@@ -38,7 +38,7 @@
          <!-- -------------------------------------------------------------------------------------------------->
             <button type="submit"  name="takeProduct" >Продать</button>
         </form>
-        <p><a href="home">Home</a><br><br>
+        <p><a href="/webShop">Главная</a></p><br><br>
     </body>
 </html>
 

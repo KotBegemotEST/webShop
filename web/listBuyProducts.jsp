@@ -26,6 +26,6 @@
             </c:forEach>
             </ul>
         </form>
-        
+         <a href="/webShop">Главная</a></p>
     </body>
 </html>

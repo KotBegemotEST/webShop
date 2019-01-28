@@ -20,6 +20,8 @@
                 </li>
             </c:forEach> 
             </ul>
+        <a href="/webShop">Главная</a></p>
+        
 </body>
 </html>
  

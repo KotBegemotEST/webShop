@@ -27,7 +27,7 @@
             <br>
             <input type="submit" value="Добавить">
         </form><br><br>
-
+        <a href="/webShop">Главная</a></p>
  <!-- <script scr="${pageContext.request.contextPath}/js/newProduct.js"></a> -->
     </body>
 </html>
